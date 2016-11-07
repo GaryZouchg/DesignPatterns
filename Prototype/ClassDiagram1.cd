@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Image">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAIQAAQAAAAAAAAIAAgAEAAAAAA=</HashCode>
+      <FileName>Prototype.cpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_prototypes" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LandSatImage">
+    <Position X="0.75" Y="3.5" Width="1.5" />
+    <AssociationLine Name="_landSatImage" Type="LandSatImage">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.318" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAABAAAAAJAAAAAAAAAAAAAAACgEAAAAAA=</HashCode>
+      <FileName>Prototype.cpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_landSatImage" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SpotImage">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <AssociationLine Name="_spotImage" Type="SpotImage" ManuallyRouted="true">
+      <Path>
+        <Point X="3.532" Y="5.954" />
+        <Point X="3.532" Y="6.339" />
+        <Point X="3.978" Y="6.339" />
+        <Point X="3.978" Y="5.954" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.381" Y="0.154" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAABAAAAAJAAAAAEAAAAAAAAACAEAAAAAA=</HashCode>
+      <FileName>Prototype.cpp</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_spotImage" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="imageType">
+    <Position X="4.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prototype.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
