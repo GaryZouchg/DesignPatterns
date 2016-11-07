@@ -1,0 +1,32 @@
+﻿Build started 10/7/2016 3:13:09 PM.
+     1>Project "C:\Users\UC215030\documents\visual studio 2010\Projects\DesignPatterns\Visitor\Visitor.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\Visitor.unsuccessfulbuild".
+       ClCompile:
+         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\Visitor.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Visitor.cpp
+         Visitor.cpp
+     1>Visitor.cpp(95): error C2784: 'void Car::visit(const std::tr1::shared_ptr<_Ty> &,const std::tr1::tuple<Args> &)' : could not deduce template argument for 'const std::tr1::tuple<Args> &' from 'Car::Elements'
+                 with
+                 [
+                     _Ty=CarElementVisitor
+                 ]
+                 Visitor.cpp(82) : see declaration of 'Car::visit'
+     1>Visitor.cpp(95): error C2780: 'void Car::visit(const std::tr1::shared_ptr<_Ty> &,const Tuple &,Car::int_<__formal>)' : expects 3 arguments - 2 provided
+                 with
+                 [
+                     _Ty=CarElementVisitor,
+                     __formal=1
+                 ]
+                 Visitor.cpp(76) : see declaration of 'Car::visit'
+     1>Visitor.cpp(95): error C2780: 'void Car::visit(const std::tr1::shared_ptr<_Ty> &,const Tuple &,Car::int_<pos>)' : expects 3 arguments - 2 provided
+                 with
+                 [
+                     _Ty=CarElementVisitor
+                 ]
+                 Visitor.cpp(69) : see declaration of 'Car::visit'
+     1>Done Building Project "C:\Users\UC215030\documents\visual studio 2010\Projects\DesignPatterns\Visitor\Visitor.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.68

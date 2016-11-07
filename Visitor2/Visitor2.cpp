@@ -60,8 +60,8 @@ class Composite: public Component
         for (int i = 0; i < children.size(); i++)
           children[i]->traverse();
     }
-};  
-
+};   
+    
 class AddVisitor: public Visitor
 {
   public:
