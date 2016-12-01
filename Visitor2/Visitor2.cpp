@@ -1,4 +1,4 @@
-// Visitor2.cpp : Defines the entry point for the console application.
+﻿// Visitor2.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -9,15 +9,15 @@ using namespace std;
 
 class Visitor
 {
-  public:
+public:
     virtual void visit(class Primitive *, class Component*) = 0;
-    virtual void visit(class Composite *, Component*) = 0;
+    virtual void visit(class Composite *,class Component*) = 0;
 };
 
 class Component
 {
     int value;
-  public:
+public:
     Component(int val)
     {
         value = val;
@@ -64,12 +64,13 @@ class Composite: public Component
     
 class AddVisitor: public Visitor
 {
-  public:
-     /*virtual*/void visit(Primitive *, Component*)
+public:
+    void AddVistitor(){"AddVistor Constructor";}
+    /*virtual*/void visit(Primitive *, Component*)
     {
-         /* does not make sense */
+    /* does not make sense */
     }
-     /*virtual*/void visit(Composite *node, Component *c)
+    /*virtual*/void visit(Composite *node, Component *c)
     {
         node->add(c);
     }
@@ -81,7 +82,7 @@ int _tmain(int argc, _TCHAR* argv[])
   Component *nodes[3];
   // The type of Composite* is "lost" when the object is assigned to a
   // Component*
-  nodes[0] = new Composite(1);
+  nodes[0] = new Composite(1);nodes[0]->traverse();
   nodes[1] = new Composite(2);
   nodes[2] = new Composite(3);
 
@@ -92,12 +93,17 @@ int _tmain(int argc, _TCHAR* argv[])
 
   // Instead of sacrificing safety, we use a Visitor to support add()
   AddVisitor addVisitor;
-  nodes[0]->accept(addVisitor, nodes[1]);
-  nodes[0]->accept(addVisitor, nodes[2]);
-  nodes[0]->accept(addVisitor, new Primitive(4));
-  nodes[1]->accept(addVisitor, new Primitive(5));
-  nodes[1]->accept(addVisitor, new Primitive(6));
-  nodes[2]->accept(addVisitor, new Primitive(7));
+  nodes[0]->accept(addVisitor, nodes[1]);   nodes[0]->traverse();
+             
+  nodes[0]->accept(addVisitor, nodes[2]);nodes[0]->traverse();
+  nodes[0]->accept(addVisitor, new Primitive(4));nodes[0]->traverse();
+
+  //composite::accept(Visitor &v, Component *c){v.vist(this,c);}
+  //visit(Composite *node, Component *c) {node->add(c);}
+  //把  Composite(2)  中的值存入node[0]   
+  nodes[1]->accept(addVisitor, new Primitive(5));nodes[0]->traverse();
+  nodes[1]->accept(addVisitor, new Primitive(6));nodes[0]->traverse();
+  nodes[2]->accept(addVisitor, new Primitive(7));nodes[0]->traverse();
 
   for (int i = 0; i < 3; i++)
   {
