@@ -120,20 +120,20 @@ public:
 private:
 	Builder *_builder;
 };
-const int UNM_ENTRIES = 6;
+const int UNM_ENTRIES = 3;
 
 PersistenceAttribute input[UNM_ENTRIES] =
 {
 	{File,"state.dat"},
-	{File,"config.sys"},
-
 	{Queue,"compute"},
-	{Queue,"log"},
-
-	{Pathway,"Pathway"},
-	{Pathway,"errot processing"}
+	{Pathway,"Pathway"}
 };
-
+PersistenceAttribute input2[UNM_ENTRIES] =
+{
+	{File,"config.sys"},
+	{Queue,"log"},
+	{Pathway,"error processing"}
+};
 void Reader::construct(PersistenceAttribute list[],int num)
 {
 	for(int i=0;i<num;i++)

@@ -1,4 +1,4 @@
-// Builder.cpp : Defines the entry point for the console application.
+﻿// Builder.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -12,9 +12,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	Reader      reader;
 
 	reader.setBuilder(&unixbuilder);
-	reader.construct(input, UNM_ENTRIES);
+	reader.construct(input2, UNM_ENTRIES);
 	std::cout<< unixbuilder.getResult()->getState()<<std::endl;
-
+    //unixbuilder.getResult()返回 DistrWorkPackage
 	reader.setBuilder(&vmsbuilder);
 	reader.construct(input,UNM_ENTRIES);
 	std::cout << vmsbuilder.getResult()->getState()<<std::endl;
