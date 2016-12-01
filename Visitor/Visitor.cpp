@@ -1,163 +1,118 @@
-// Visitor.cpp : Defines the entry point for the console application.
-//
+﻿// Visitor2.cpp : Defines the entry point for the console application.
+//git commit test
 
 #include "stdafx.h"
 
-#include <memory>
 #include <iostream>
-#include <tuple>
+#include <vector>
+using namespace std;
 
-/// original visitor pattern
-class Wheel;
-class Engine;
-class Body;
-class Car;
-
-class CarElementVisitor
+class Visitor
 {
 public:
-  virtual void visit(const std::shared_ptr<Wheel>& wheel) const = 0;
-  virtual void visit(const std::shared_ptr<Engine>& engine) const = 0;
-  virtual void visit(const std::shared_ptr<Body>& body) const = 0;
-  virtual void visit(const std::shared_ptr<Car>& car) const = 0;
+    virtual void visit(class Primitive *, class Component*) = 0;
+    virtual void visit(class Composite *,class Component*) = 0;
 };
 
-class CarElement
+class Component
+{
+    int value;
+public:
+    Component(int val)
+    {
+        value = val;
+    }
+    virtual void traverse()
+    {
+        cout << value << " ";
+    }
+    // Having add() here sacrifices safety, but it supports transparency
+    // virtual void add( Component* ) { }
+    virtual void accept(Visitor &, Component*) = 0;
+};
+
+class Primitive: public Component
+{
+  public:
+    Primitive(int val): Component(val){cout<<"primitive constructor"<<endl ;}
+    void accept(Visitor &v, Component *c)
+    {
+        v.visit(this, c);
+    }
+};
+
+class Composite: public Component
+{
+    vector < Component * > children;
+  public:
+    Composite(int val): Component(val){ cout<<"composit constructor"<<endl ; }
+    void add(Component *ele)
+    {
+        children.push_back(ele);
+    }	
+    void accept(Visitor &v, Component *c)
+    {
+        v.visit(this, c);
+    }
+    void traverse()
+    {
+        Component::traverse();
+        for (int i = 0; i < children.size(); i++)
+          children[i]->traverse();   //函数自身调用
+    }
+};    
+    
+class AddVisitor: public Visitor
 {
 public:
-  virtual void accept(const std::shared_ptr<CarElementVisitor>& visitor) = 0;
+    void AddVistitor(){"AddVistor Constructor";}
+    void visit(Primitive *, Component*)
+    {
+    /* does not make sense */
+    }
+    void visit(Composite *node, Component *c)
+    {
+        node->add(c);
+    }
 };
-
-class Wheel : public CarElement,
-              public std::enable_shared_from_this<Wheel>
-{
-public:
-  virtual void accept(const std::shared_ptr<CarElementVisitor>& visitor)
-  {
-    visitor->visit(shared_from_this());
-  }
-};
-
-class Engine : public CarElement,
-               public std::enable_shared_from_this<Engine>
-{
-public:
-  virtual void accept(const std::shared_ptr<CarElementVisitor>& visitor)
-  {
-    visitor->visit(shared_from_this());
-  }
-};
-
-class Body : public CarElement,
-             public std::enable_shared_from_this<Body>
-{
-public:
-  virtual void accept(const std::shared_ptr<CarElementVisitor>& visitor)
-  {
-    visitor->visit(shared_from_this());
-  }
-};
-
-class Car : public CarElement,
-            public std::enable_shared_from_this<Car>
-{
-  typedef std::tuple<std::shared_ptr<Wheel>, std::shared_ptr<Engine>, std::shared_ptr<Body> > Elements;
-
-  template <std::size_t> class int_ {};
-
-  template <typename Tuple, std::size_t pos>
-  void visit(const std::shared_ptr<CarElementVisitor>& visitor, const Tuple& t, int_<pos>)
-  {
-    visitor->visit(std::get<std::tuple_size<Tuple>::value - pos>(t));
-    visit(visitor, t, int_<pos - 1>());
-  }
-
-  template <typename Tuple>
-  void visit(const std::shared_ptr<CarElementVisitor>& visitor, const Tuple& t, int_<1>)
-  {
-    visitor->visit(std::get<std::tuple_size<Tuple>::value - 1>(t));
-  }
-
-  template <typename Args>
-  void visit(const std::shared_ptr<CarElementVisitor>& visitor, const std::tuple<Args >& t)
-  {
-    visit(visitor, t, int_<sizeof...(Args)>());
-  }
-
-public:
-  Car()
-  {
-    elements_ = std::make_tuple(std::make_shared<Wheel>(), std::make_shared<Engine>(), std::make_shared<Body>());
-  }
-
-  virtual void accept(const std::shared_ptr<CarElementVisitor>& visitor)
-  {
-    visit(visitor, elements_);
-    visitor->visit(shared_from_this());
-  }
-
-private:
-
-  Elements elements_;
-};
-
-class PrintVisitor : public CarElementVisitor
-{
-public:
-  virtual void visit(const std::shared_ptr<Wheel>& wheel) const
-  {
-    std::cout << "void PrintVisitor::visit(std::shared_ptr<Wheel> wheel) const" << std::endl;
-  }
-
-  virtual void visit(const std::shared_ptr<Engine>& engine) const
-  {
-    std::cout << "void PrintVisitor::visit(std::shared_ptr<Engine> engine) const" << std::endl;
-  }
-
-  virtual void visit(const std::shared_ptr<Body>& body) const
-  {
-    std::cout << "void PrintVisitor::visit(std::shared_ptr<Body> body) const" << std::endl;
-  }
-
-  virtual void visit(const std::shared_ptr<Car>& car) const
-  {
-    std::cout << "void PrintVisitor::visit(std::shared_ptr<Car> car) const" << std::endl;
-  }
-};
-
-class OtherVisitor : public CarElementVisitor
-{
-public:
-  virtual void visit(const std::shared_ptr<Wheel>& wheel) const
-  {
-    std::cout << "void OtherVisitor::visit(std::shared_ptr<Wheel> wheel) const" << std::endl;
-  }
-
-  virtual void visit(const std::shared_ptr<Engine>& engine) const
-  {
-    std::cout << "void OtherVisitor::visit(std::shared_ptr<Engine> engine) const" << std::endl;
-  }
-
-  virtual void visit(const std::shared_ptr<Body>& body) const
-  {
-    std::cout << "void OtherVisitor::visit(std::shared_ptr<Body> body) const" << std::endl;
-  }
-
-  virtual void visit(const std::shared_ptr<Car>& car) const
-  {
-    std::cout << "void OtherVisitor::visit(std::shared_ptr<Car> car) const" << std::endl;
-  }
-};
-
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	
-	std::shared_ptr<CarElement> car(std::make_shared<Car>());
-	car->accept(std::make_shared<PrintVisitor>());
-	car->accept(std::make_shared<OtherVisitor>());
-	
-	return 0;
+  Component *nodes[3];
+  // The type of Composite* is "lost" when the object is assigned to a Component*
+  // 把 Composite* 的类型赋值给 Component* 后, Composite*的类型信息就丢失了
+  nodes[0] = new Composite(1);
+  nodes[1] = new Composite(2);
+  nodes[2] = new Composite(3);
+
+  // If add() were in class Component, this would work   nodes[0]->add( nodes[1] );
+  // 如果类Component中 存在虚函数add() nodes[0]->add( nodes[1] )  ;    
+  // If it is NOT in Component, and only in Composite,  you get the error -
+  //    no member function `Component::add(Component *)' defined
+  // 如果没有会报错; 成员函数Component::add(Component *) 未定义
+
+  // Instead of sacrificing safety, we use a Visitor to support add()
+  AddVisitor addVisitor;
+  nodes[0]->accept(addVisitor, nodes[1]);   
+
+  nodes[0]->accept(addVisitor, nodes[2]);
+  nodes[0]->accept(addVisitor, new Primitive(4));
+  //composite::accept(Visitor &v, Component *c){v.vist(this,c);}
+  //visit(Composite *node, Component *c) {node->add(c);}
+  //把  Composite(2)  中的值 存入node[0]   
+  nodes[1]->accept(addVisitor, new Primitive(5));
+  nodes[1]->accept(addVisitor, new Primitive(6));
+  nodes[2]->accept(addVisitor, new Primitive(7));
+
+  for (int i = 0; i < 3; i++)
+  {
+    nodes[i]->traverse();
+    cout << endl;
+  }
+
+  char exit;
+  std::cin>>exit;
+  return 0;
 }
 

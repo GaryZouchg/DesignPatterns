@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0CEEB900-5640-4095-AFA2-65C8A77B9A07}</ProjectGuid>
+    <ProjectGuid>{7EBB2BC8-6FEE-48D0-861F-59EE7BD7A2EA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Visitor</RootNamespace>
   </PropertyGroup>
@@ -72,7 +72,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
