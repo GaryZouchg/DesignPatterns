@@ -15,6 +15,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	reader.construct(input2, UNM_ENTRIES);
 	std::cout<< unixbuilder.getResult()->getState()<<std::endl;
     //unixbuilder.getResult()返回 DistrWorkPackage
+    //Reader的对象来创建 DistrWorkPackage 对象
 	reader.setBuilder(&vmsbuilder);
 	reader.construct(input,UNM_ENTRIES);
 	std::cout << vmsbuilder.getResult()->getState()<<std::endl;
