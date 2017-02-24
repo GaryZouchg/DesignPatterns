@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include "Visitor.h"
 #include <string>
-#include "Methods.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -12,17 +11,19 @@ int _tmain(int argc, _TCHAR* argv[])
     typedef boost::variant< int,double,bool,std::string >  VRT;
     std::vector< VRT > vec_VRT;
 
-    VRT tmp= 100;
+    VRT tmpi= 100;
+    std::string tempstr="string";
 
-    vec_VRT.push_back( tmp );
-    vec_VRT.push_back( "string" );
+    vec_VRT.push_back( tmpi );
     vec_VRT.push_back( 1.0001 );
+    vec_VRT.push_back( true );
+    vec_VRT.push_back( tempstr );
 
-    IMethods * f = new Methods;
 
     for(auto iter= vec_VRT.begin(); iter != vec_VRT.end(); iter++)
     {
-        f->DataPrint( 45 );
+        PrintVisitor printVisitor( *iter );
+        boost::apply_visitor( printVisitor,*iter );
     }
     
 

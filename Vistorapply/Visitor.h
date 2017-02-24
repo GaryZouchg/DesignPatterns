@@ -6,9 +6,6 @@
 #include<vector>
 #include "Methods.h"
 #include "boost\variant.hpp"
-#include "boost\lexical_cast.hpp"
-
-
 
 class PrintVisitor : public boost::static_visitor<>
 {
@@ -23,7 +20,10 @@ public:
         fptr = new Methods();
     }
 
-    template<typename T> void operator()
+    template<typename T> void operator()( T & v1)
+    {
+        fptr->DataPrint( v1 );
+    }
 
 
 };
