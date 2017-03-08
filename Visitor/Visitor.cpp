@@ -17,7 +17,7 @@ public:
 class Component
 {
     int value;
-public:
+public:		
     Component(int val)
     {
         value = val;
@@ -87,9 +87,9 @@ int _tmain(int argc, _TCHAR* argv[])
   nodes[2] = new Composite(3);
 
   // If add() were in class Component, this would work   nodes[0]->add( nodes[1] );
-  // 如果类Component中 存在虚函数add() nodes[0]->add( nodes[1] )  ;    
   // If it is NOT in Component, and only in Composite,  you get the error -
   //    no member function `Component::add(Component *)' defined
+  // 如果类Component中 存在虚函数add() nodes[0]->add( nodes[1] )  ;    
   // 如果没有会报错; 成员函数Component::add(Component *) 未定义
 
   // Instead of sacrificing safety, we use a Visitor to support add()
