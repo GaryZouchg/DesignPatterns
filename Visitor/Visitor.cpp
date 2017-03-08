@@ -1,5 +1,4 @@
 ﻿// Visitor2.cpp : Defines the entry point for the console application.
-//git commit test
 
 #include "stdafx.h"
 
@@ -75,7 +74,6 @@ public:
         node->add(c);
     }
 };
-
 
 int _tmain(int argc, _TCHAR* argv[])
 {

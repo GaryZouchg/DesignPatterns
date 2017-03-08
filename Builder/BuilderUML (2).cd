@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Builder">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAQAAAQAACAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_result" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DistrWorkPackage">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAEAAAAAAACAAAAAAAEAhAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Builder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reader">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Builder.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_builder" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UnixBuilder">
+    <Position X="5.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAACQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VmsBuilder">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="PersistenceAttribute" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="PersistenceType" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Builder.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
