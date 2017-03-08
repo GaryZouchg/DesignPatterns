@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Composite", "Composite\Comp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Visitor", "Visitor\Visitor.vcxproj", "{7EBB2BC8-6FEE-48D0-861F-59EE7BD7A2EA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vistorapply", "Vistorapply\Vistorapply.vcxproj", "{62C20BC6-8B80-40F0-B735-571A7F8F275F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -61,6 +63,10 @@ Global
 		{7EBB2BC8-6FEE-48D0-861F-59EE7BD7A2EA}.Debug|Win32.Build.0 = Debug|Win32
 		{7EBB2BC8-6FEE-48D0-861F-59EE7BD7A2EA}.Release|Win32.ActiveCfg = Release|Win32
 		{7EBB2BC8-6FEE-48D0-861F-59EE7BD7A2EA}.Release|Win32.Build.0 = Release|Win32
+		{62C20BC6-8B80-40F0-B735-571A7F8F275F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{62C20BC6-8B80-40F0-B735-571A7F8F275F}.Debug|Win32.Build.0 = Debug|Win32
+		{62C20BC6-8B80-40F0-B735-571A7F8F275F}.Release|Win32.ActiveCfg = Release|Win32
+		{62C20BC6-8B80-40F0-B735-571A7F8F275F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
