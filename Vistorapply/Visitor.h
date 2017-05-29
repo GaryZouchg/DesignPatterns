@@ -12,10 +12,9 @@ class PrintVisitor : public boost::static_visitor<>
      typedef boost::variant< int,double,bool,std::string >  VRT;
 private:
     IMethods * fptr;
-    VRT  vrt;
 
 public:
-    PrintVisitor( VRT v ):vrt( v )
+    PrintVisitor( )
     {
         fptr = new Methods();
     }
@@ -28,3 +27,21 @@ public:
 
 };
 
+
+class Visitor
+{
+    typedef boost::variant< int,double,bool,std::string >  VRT;
+public:
+    Visitor()
+    {
+        fptr = new Methods();
+    }
+
+    template<typename T> void visit( T& arg  )
+    {
+        fptr->DataPrint( arg );
+        return;
+    }
+private:
+    IMethods * fptr;
+};

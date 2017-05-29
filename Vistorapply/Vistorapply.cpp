@@ -22,11 +22,16 @@ int _tmain(int argc, _TCHAR* argv[])
 
     for(auto iter= vec_VRT.begin(); iter != vec_VRT.end(); iter++)
     {
-        PrintVisitor printVisitor( *iter );
+        PrintVisitor printVisitor;
         boost::apply_visitor( printVisitor,*iter );
     }
     
 
+    for( auto iter= vec_VRT.begin(); iter != vec_VRT.end(); iter++ )
+    {
+        Visitor visitor;
+        //visitor.visit( *iter );
+    }
 
 
 
